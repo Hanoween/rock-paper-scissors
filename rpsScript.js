@@ -18,35 +18,43 @@ function playRound(playSelection, computerSelection) {
     }
 }
 
-function game() {
-    var scoreBoard = { "Tie": 0, "Win": 0, "Lose": 0 }
-    
-    for (let i = 1; i <= 5; i++) {
-        const playSelection = prompt("Enter your choice: Rock, Paper, Scissors");
-        const computerSelection = getComputerChoice();
-        
-        let result = playRound(playSelection, computerSelection);
-        console.log(result);
-        if (result.includes("Tie")) {
-            scoreBoard["Tie"]++;
-        }
-        else if (result.includes("Win")) {
-            scoreBoard["Win"]++;
-        }
-        else if (result.includes("Lose")) {
-            scoreBoard["Lose"]++;
-        }
+function game(output) {
+    if (output.includes("Win")) {
+        if (++scoreBoard["Win"] == 5) alert("You Win!");
     }
-
-    if (scoreBoard["Win"] > scoreBoard["Lose"] && scoreBoard["Win"] > scoreBoard["Tie"]){
-        return "You Win!";
-    }
-    else if (scoreBoard["Lose"] > scoreBoard["Win"] && scoreBoard["Lose"] > scoreBoard["Tie"]){
-        return "You Lose!";
-    }
-    else {
-        return "Nobody Wins!";
+    else if (output.includes("Lose")) {
+        if (++scoreBoard["Lose"] == 5) alert("You Lose!");
     }
 }
 
-console.log(game());
+const btn = document.querySelectorAll('#choice');
+var scoreBoard = { "Tie": 0, "Win": 0, "Lose": 0 }
+
+btn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        output = playRound(btn.innerHTML, getComputerChoice());
+        game(output)
+        const result = document.createElement('div');
+        result.innerHTML = output;
+        document.body.appendChild(result);
+    });
+});
+
+/*if (scoreBoard["Win"] > scoreBoard["Lose"] && scoreBoard["Win"] > scoreBoard["Tie"]) {
+    return "You Win!";
+}
+else if (scoreBoard["Lose"] > scoreBoard["Win"] && scoreBoard["Lose"] > scoreBoard["Tie"]) {
+    return "You Lose!";
+}
+else {
+    return "Nobody Wins!";
+}*/
+
+/*const btn = document.querySelectorAll('#choice');
+btn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const result = document.createElement('div');
+        result.innerHTML = output;
+        document.body.appendChild(result);
+    });
+});*/
