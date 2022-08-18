@@ -39,22 +39,3 @@ btn.forEach((btn) => {
         document.body.appendChild(result);
     });
 });
-
-/*if (scoreBoard["Win"] > scoreBoard["Lose"] && scoreBoard["Win"] > scoreBoard["Tie"]) {
-    return "You Win!";
-}
-else if (scoreBoard["Lose"] > scoreBoard["Win"] && scoreBoard["Lose"] > scoreBoard["Tie"]) {
-    return "You Lose!";
-}
-else {
-    return "Nobody Wins!";
-}*/
-
-/*const btn = document.querySelectorAll('#choice');
-btn.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        const result = document.createElement('div');
-        result.innerHTML = output;
-        document.body.appendChild(result);
-    });
-});*/
